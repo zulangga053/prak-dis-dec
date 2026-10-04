@@ -4,10 +4,9 @@
 
 ### Identitas
 
-- Nama: **[Isi nama lengkap]**
-- NIM: **[Isi NIM]**
-- Kelas: **[Isi kelas]**
-- Tanggal Praktikum: **[Isi tanggal]**
+- Nama: **Zul Ikhwanul Anggara**
+- NIM: **255410043**
+- Kelas: **Informatika-1**
 
 ## 1. Tujuan
 
