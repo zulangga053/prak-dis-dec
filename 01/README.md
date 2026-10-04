@@ -64,9 +64,8 @@ git --version
 Identitas pengguna Git dikonfigurasi agar setiap commit memiliki informasi pembuat yang benar.
 
 ```bash
-git config --global user.name "Nama Lengkap"
-git config --global user.email "email-github@example.com"
-git config --global init.defaultBranch main
+git config --global user.name "zulangga053"
+git config --global user.email "anggapart174@gmail.com"
 git config --global --list
 ```
 
