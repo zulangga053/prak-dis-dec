@@ -66,6 +66,7 @@ Identitas pengguna Git dikonfigurasi agar setiap commit memiliki informasi pembu
 ```bash
 git config --global user.name "zulangga053"
 git config --global user.email "anggapart174@gmail.com"
+git config --global init.defaultBranch main
 git config --global --list
 ```
 
