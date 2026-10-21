@@ -68,6 +68,9 @@ Setiap event lokal menaikkan elemen clock milik proses. Saat mengirim pesan, pro
 
 Kelima thread dimulai hampir bersamaan. Karena scheduler OS menentukan giliran eksekusi, urutan pesan `starting` dan `finished` tidak harus sama pada setiap eksekusi. Semua task tetap selesai karena setiap thread dipanggil `join()`.
 
+![Multithreading eksekusi 1](images/02-multithreading.png)
+![Multithreading eksekusi 2](images/02b-multithreading.png)
+
 ### 5.3 Race condition
 
 Pada `race-conditions-01.py`, dua thread sama-sama membaca saldo Rp100 sebelum salah satunya mengurangi saldo. Keduanya dapat lolos pemeriksaan saldo dan melakukan penarikan Rp80, sehingga hasil akhir dapat menjadi negatif atau menunjukkan dua transaksi yang tidak valid.
@@ -75,6 +78,9 @@ Pada `race-conditions-01.py`, dua thread sama-sama membaca saldo Rp100 sebelum s
 Pada `race-conditions-02.py`, `Lock` membuat pemeriksaan dan pengurangan saldo menjadi satu critical section. Thread kedua menunggu sampai thread pertama melepas lock, lalu membaca saldo terbaru. Karena saldo tersisa Rp20, penarikan kedua tidak dilakukan.
 
 Visualisasi yang perlu dilampirkan: dua thread membaca saldo Rp100 pada waktu yang sama, kemudian masing-masing menulis hasil pengurangan.
+
+![Race condition tanpa lock](images/03-race-condition-tanpa-lock.png)
+![Race condition dengan lock](images/04-race-condition-dengan-lock.png)
 
 ### 5.4 Deadlock
 
@@ -84,11 +90,21 @@ Visualisasi yang perlu dilampirkan: dua thread membaca saldo Rp100 pada waktu ya
 
 Visualisasi yang perlu dilampirkan: T1: A → menunggu B; T2: B → menunggu A.
 
+![Deadlock](images/05-deadlock.png)
+![Solusi deadlock](images/06-solusi-deadlock.png)
+
 ### 5.5 Raft
 
 Node memulai sebagai follower. Saat timeout terjadi, node menjadi candidate, menaikkan term, dan meminta suara. Candidate yang memperoleh mayoritas menjadi leader. Leader mengirim heartbeat agar follower tidak memulai election baru. Modul `raft_module.py` menyederhanakan proses tersebut menjadi pemilihan leader dan penambahan log.
 
 Visualisasi yang perlu dilampirkan: tiga node, candidate mengirim request vote, dua dari tiga suara memilih candidate, kemudian candidate menjadi leader.
+
+![Raft](images/07-raft.png)
+
+## 5.6 Output modul buatan
+
+![Vector Clock module](images/08-vector-clock-module.png)
+![Raft module](images/09-raft-module.png)
 
 ## 6. Analisis
 
