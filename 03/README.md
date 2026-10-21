@@ -27,17 +27,45 @@ Sinkronisasi waktu menyamakan waktu antarperangkat menggunakan NTP. Vector clock
 
 ## 4. Langkah Pengerjaan
 
-### 4.1 Sinkronisasi waktu
+### 4.1 Sinkronisasi waktu menggunakan Chrony
 
-Sinkronisasi NTP memerlukan client waktu yang menghubungi server NTP, mengukur selisih waktu, lalu menyesuaikan jam sistem secara bertahap. Pada macOS, status waktu dapat diperiksa dengan:
+Praktikum utama dilakukan pada Kali Linux ARM64 di Linux VM. Chrony berfungsi sebagai client NTP yang menghubungi server waktu, mengukur offset, lalu menyesuaikan waktu sistem.
+
+Instalasi dilakukan dengan:
+
+```bash
+sudo apt update
+sudo apt install chrony
+```
+
+![Instalasi Chrony pada Linux](images/14-instalasi-chrony-linux.png)
+
+Setelah instalasi, service diperiksa dan dijalankan:
+
+```bash
+sudo systemctl status chrony
+sudo systemctl start chrony
+```
+
+Pada percobaan awal, service berstatus `inactive (dead)`. Kondisi tersebut menyebabkan `chronyc` menampilkan `506 Cannot talk to daemon`. Setelah `chrony` dijalankan, status service menjadi aktif dan daemon dapat menerima permintaan dari client `chronyc`.
+
+```bash
+chronyc sources -v
+chronyc tracking
+```
+
+![Status service Chrony](images/15-status-chrony-linux.png)
+![Status sinkronisasi Chrony](images/16-tracking-chrony-linux.png)
+
+`chronyc sources -v` menampilkan server NTP yang tersedia dan sumber yang dipilih. `chronyc tracking` menampilkan reference time, stratum, system time, offset, serta status leap. Data tersebut menjadi bukti bahwa Chrony telah berjalan dan melakukan sinkronisasi waktu.
+
+Sebagai pengujian tambahan pada macOS, sinkronisasi NTP juga dilakukan menggunakan client bawaan macOS:
 
 ```bash
 sntp -sS time.apple.com
 ```
 
-Perintah tersebut meminta waktu dari server NTP `time.apple.com`, menghitung offset antara waktu lokal dan server, lalu menyesuaikan waktu sistem. Bukti pelaksanaan:
-
-![Bukti sinkronisasi NTP](images/13-sinkronisasi-ntp.png)
+![Bukti sinkronisasi NTP pada macOS](images/13-sinkronisasi-ntp.png)
 
 ### 4.2 Menjalankan program contoh
 
