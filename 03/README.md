@@ -35,6 +35,10 @@ Sinkronisasi NTP memerlukan client waktu yang menghubungi server NTP, mengukur s
 sntp -sS time.apple.com
 ```
 
+Perintah tersebut meminta waktu dari server NTP `time.apple.com`, menghitung offset antara waktu lokal dan server, lalu menyesuaikan waktu sistem. Bukti pelaksanaan:
+
+![Bukti sinkronisasi NTP](images/13-sinkronisasi-ntp.png)
+
 ### 4.2 Menjalankan program contoh
 
 ```bash
@@ -77,7 +81,17 @@ Pada `race-conditions-01.py`, dua thread sama-sama membaca saldo Rp100 sebelum s
 
 Pada `race-conditions-02.py`, `Lock` membuat pemeriksaan dan pengurangan saldo menjadi satu critical section. Thread kedua menunggu sampai thread pertama melepas lock, lalu membaca saldo terbaru. Karena saldo tersisa Rp20, penarikan kedua tidak dilakukan.
 
-Visualisasi yang perlu dilampirkan: dua thread membaca saldo Rp100 pada waktu yang sama, kemudian masing-masing menulis hasil pengurangan.
+Visualisasi manual:
+
+1. Saldo awal adalah Rp100.
+2. Thread 1 membaca saldo Rp100 dan memeriksa bahwa Rp100 >= Rp80.
+3. Sebelum Thread 1 mengurangi saldo, Thread 2 juga membaca saldo Rp100 dan lolos pemeriksaan.
+4. Kedua thread melakukan penarikan Rp80 tanpa sinkronisasi.
+5. Pemeriksaan saldo dan pengurangan tidak dilakukan sebagai satu operasi atomik.
+
+Akibatnya, dua transaksi dapat sama-sama dianggap valid walaupun total penarikan Rp160 melebihi saldo awal. Inilah data race: hasil bergantung pada urutan eksekusi thread.
+
+![Visualisasi race condition](images/10-visualisasi-race-condition.png)
 
 ![Race condition tanpa lock](images/03-race-condition-tanpa-lock.png)
 ![Race condition dengan lock](images/04-race-condition-dengan-lock.png)
@@ -88,7 +102,15 @@ Visualisasi yang perlu dilampirkan: dua thread membaca saldo Rp100 pada waktu ya
 
 `deadlock-02.py` melepaskan lock pertama sebelum mengambil lock kedua dan menggunakan timeout. Karena tidak ada thread yang memegang satu lock sambil menunggu lock lainnya, circular wait tidak terbentuk.
 
-Visualisasi yang perlu dilampirkan: T1: A → menunggu B; T2: B → menunggu A.
+Visualisasi manual:
+
+1. Thread 1 memperoleh `lock_a`, kemudian menunggu `lock_b`.
+2. Thread 2 memperoleh `lock_b`, kemudian menunggu `lock_a`.
+3. Thread 1 tidak dapat melanjutkan karena `lock_b` dimiliki Thread 2.
+4. Thread 2 tidak dapat melanjutkan karena `lock_a` dimiliki Thread 1.
+5. Terbentuk circular wait sehingga kedua thread berhenti menunggu.
+
+![Visualisasi deadlock](images/11-visualisasi-deadlock.png)
 
 ![Deadlock](images/05-deadlock.png)
 ![Solusi deadlock](images/06-solusi-deadlock.png)
@@ -97,7 +119,16 @@ Visualisasi yang perlu dilampirkan: T1: A → menunggu B; T2: B → menunggu A.
 
 Node memulai sebagai follower. Saat timeout terjadi, node menjadi candidate, menaikkan term, dan meminta suara. Candidate yang memperoleh mayoritas menjadi leader. Leader mengirim heartbeat agar follower tidak memulai election baru. Modul `raft_module.py` menyederhanakan proses tersebut menjadi pemilihan leader dan penambahan log.
 
-Visualisasi yang perlu dilampirkan: tiga node, candidate mengirim request vote, dua dari tiga suara memilih candidate, kemudian candidate menjadi leader.
+Visualisasi manual:
+
+1. Semua node mulai sebagai follower.
+2. Setelah election timeout, Node 2 menjadi candidate dan menaikkan term.
+3. Node 2 mengirim `RequestVote` kepada Node 1 dan Node 3.
+4. Node 2 memperoleh suara mayoritas, yaitu minimal 2 dari 3 suara termasuk suara sendiri.
+5. Node 2 berubah menjadi leader dan mengirim heartbeat kepada follower.
+6. Selama heartbeat diterima, follower tidak memulai election baru.
+
+![Visualisasi algoritma Raft](images/12-visualisasi-raft.png)
 
 ![Raft](images/07-raft.png)
 
