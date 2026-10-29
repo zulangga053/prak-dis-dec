@@ -1,0 +1,90 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+version: 1
+site:
+  title: Laporan Praktikum Sistem Terdistribusi
+  structure:
+    - type: space
+      key: modul-01
+      title: Modul 1
+      path: modul-01
+      default: true
+      content:
+        directory: ./01
+    - type: space
+      key: modul-02
+      title: Modul 2
+      path: modul-02
+      content:
+        directory: ./02
+    - type: space
+      key: modul-03
+      title: Modul 3
+      path: modul-03
+      content:
+        directory: ./03
+    - type: space
+      key: modul-04
+      title: Modul 4
+      path: modul-04
+      content:
+        directory: ./04
+    - type: space
+      key: modul-05
+      title: Modul 5 — Fault Tolerance
+      path: modul-05
+      content:
+        directory: ./05
+    - type: space
+      key: modul-06
+      title: Modul 6
+      path: modul-06
+      content:
+        directory: ./06
+    - type: space
+      key: modul-07
+      title: Modul 7
+      path: modul-07
+      content:
+        directory: ./07
+    - type: space
+      key: modul-08
+      title: Modul 8
+      path: modul-08
+      content:
+        directory: ./08
+    - type: space
+      key: modul-09
+      title: Modul 9
+      path: modul-09
+      content:
+        directory: ./09
+    - type: space
+      key: modul-10
+      title: Modul 10
+      path: modul-10
+      content:
+        directory: ./10
+    - type: space
+      key: modul-11
+      title: Modul 11
+      path: modul-11
+      content:
+        directory: ./11
+    - type: space
+      key: modul-12
+      title: Modul 12
+      path: modul-12
+      content:
+        directory: ./12
+    - type: space
+      key: modul-13
+      title: Modul 13
+      path: modul-13
+      content:
+        directory: ./13
+    - type: space
+      key: modul-14
+      title: Modul 14
+      path: modul-14
+      content:
+        directory: ./14
