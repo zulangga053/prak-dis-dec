@@ -4,9 +4,9 @@
 
 ### Identitas
 
-- Nama: **Zul Ikhwanul Anggara**
-- NIM: **255410043**
-- Kelas: **Informatika-1**
+* Nama: **Zul Ikhwanul Anggara**
+* NIM: **255410043**
+* Kelas: **Informatika-1**
 
 ## 1. Tujuan
 
@@ -29,23 +29,23 @@ GitHub adalah layanan berbasis web yang digunakan untuk menyimpan repository Git
 
 ### 2.3 Istilah Penting
 
-- **Repository**: tempat penyimpanan file dan riwayat perubahan.
-- **Remote repository**: repository yang berada di server, dalam praktikum ini berada di GitHub.
-- **Commit**: catatan permanen atas perubahan yang dilakukan.
-- **Branch**: cabang pengembangan yang terpisah dari branch utama.
-- **Push**: mengirim commit dari repository lokal ke remote repository.
-- **Pull**: mengambil perubahan dari remote repository ke repository lokal.
-- **Pull request**: permintaan untuk menggabungkan perubahan dari suatu branch ke branch lain.
-- **Merge**: proses penggabungan perubahan dari dua branch.
+* **Repository**: tempat penyimpanan file dan riwayat perubahan.
+* **Remote repository**: repository yang berada di server, dalam praktikum ini berada di GitHub.
+* **Commit**: catatan permanen atas perubahan yang dilakukan.
+* **Branch**: cabang pengembangan yang terpisah dari branch utama.
+* **Push**: mengirim commit dari repository lokal ke remote repository.
+* **Pull**: mengambil perubahan dari remote repository ke repository lokal.
+* **Pull request**: permintaan untuk menggabungkan perubahan dari suatu branch ke branch lain.
+* **Merge**: proses penggabungan perubahan dari dua branch.
 
 ## 3. Alat dan Bahan
 
-- Komputer atau laptop.
-- Git.
-- Akun GitHub.
-- Terminal atau command prompt.
-- Text editor.
-- Repository GitHub: [prak-dis-dec](https://github.com/zulangga053/prak-dis-dec).
+* Komputer atau laptop.
+* Git.
+* Akun GitHub.
+* Terminal atau command prompt.
+* Text editor.
+* Repository GitHub: [prak-dis-dec](https://github.com/zulangga053/prak-dis-dec).
 
 ## 4. Langkah Pengerjaan
 
@@ -57,7 +57,7 @@ Versi Git diperiksa menggunakan perintah berikut:
 git --version
 ```
 
-![Pemeriksaan versi Git](images/01-git-version.png)
+![Pemeriksaan versi Git](.gitbook/assets/01-git-version.png)
 
 ### 4.2 Mengonfigurasi Git
 
@@ -70,13 +70,13 @@ git config --global init.defaultBranch main
 git config --global --list
 ```
 
-![Konfigurasi Git](images/02-git-config.png)
+![Konfigurasi Git](.gitbook/assets/02-git-config.png)
 
 ### 4.3 Membuat Repository GitHub
 
 Repository `prak-dis-dec` dibuat pada akun GitHub untuk menyimpan laporan praktikum dari minggu pertama sampai minggu ke-14.
 
-![Pembuatan repository](images/03-create-repo.png)
+![Pembuatan repository](.gitbook/assets/03-create-repo.png)
 
 ### 4.4 Melakukan Clone Repository
 
@@ -87,7 +87,7 @@ git clone https://github.com/zulangga053/prak-dis-dec.git
 cd prak-dis-dec
 ```
 
-![Clone repository](images/04-clone-repository.png)
+![Clone repository](.gitbook/assets/04-clone-repository.png)
 
 ### 4.5 Memeriksa Remote Repository
 
@@ -97,7 +97,7 @@ Remote repository diperiksa untuk memastikan repository lokal terhubung ke GitHu
 git remote -v
 ```
 
-![Remote repository](images/05-git-remote.png)
+![Remote repository](.gitbook/assets/05-git-remote.png)
 
 ### 4.6 Memeriksa Status dan Branch
 
@@ -108,7 +108,7 @@ git status
 git branch
 ```
 
-![Status dan branch repository](images/06-git-status-branch-repo.png)
+![Status dan branch repository](.gitbook/assets/06-git-status-branch-repo.png)
 
 ### 4.7 Membuat Branch Praktikum
 
@@ -118,7 +118,7 @@ Branch baru dibuat sebagai tempat melakukan latihan perubahan tanpa langsung bek
 git switch -c latihan-git
 ```
 
-![Pembuatan dan pemeriksaan branch](images/07-create-branch-and-kondisi-branch.png)
+![Pembuatan dan pemeriksaan branch](.gitbook/assets/07-create-branch-and-kondisi-branch.png)
 
 ### 4.8 Menambahkan Perubahan dan Membuat Commit
 
@@ -130,7 +130,7 @@ git commit -m "docs: add git practice file"
 git log --oneline
 ```
 
-![Add, commit, dan riwayat perubahan](images/08-add-commit-riwayat-branch.png)
+![Add, commit, dan riwayat perubahan](.gitbook/assets/08-add-commit-riwayat-branch.png)
 
 ### 4.9 Mengirim Branch ke GitHub
 
@@ -140,19 +140,19 @@ Branch hasil latihan dikirim ke remote repository menggunakan perintah berikut:
 git push -u origin latihan-git
 ```
 
-![Push branch](images/09-git-push-branch.png)
+![Push branch](.gitbook/assets/09-git-push-branch.png)
 
 ### 4.10 Membuat Pull Request
 
 Pull request dibuat untuk mengusulkan penggabungan perubahan dari branch `latihan-git` ke branch utama pada GitHub.
 
-![Pull request](images/10-git-PR.png)
+![Pull request](.gitbook/assets/10-git-PR.png)
 
 ### 4.11 Memeriksa Branch Utama Setelah Pull Request
 
 Setelah proses pull request, kondisi branch utama diperiksa untuk memastikan perubahan telah diproses pada repository.
 
-![Kondisi branch utama setelah pull request](images/11-cek-branch-main-after-pr.png)
+![Kondisi branch utama setelah pull request](.gitbook/assets/11-cek-branch-main-after-pr.png)
 
 ## 5. Hasil Praktikum
 
@@ -177,12 +177,12 @@ Penggunaan branch memungkinkan pekerjaan dilakukan secara terpisah dari branch `
 
 ## 7. Kendala dan Solusi
 
-| Kendala | Solusi |
-|---|---|
+| Kendala                                              | Solusi                                                                     |
+| ---------------------------------------------------- | -------------------------------------------------------------------------- |
 | Belum memahami perbedaan repository lokal dan remote | Mempelajari hubungan antara repository lokal, `origin`, `push`, dan `pull` |
-| Perubahan belum terlihat di GitHub | Memeriksa `git status`, membuat commit, lalu menjalankan `git push` |
-| Perlu memisahkan perubahan dari branch utama | Membuat branch baru menggunakan `git switch -c` |
-| Perlu menggabungkan perubahan secara terkontrol | Membuat pull request melalui GitHub |
+| Perubahan belum terlihat di GitHub                   | Memeriksa `git status`, membuat commit, lalu menjalankan `git push`        |
+| Perlu memisahkan perubahan dari branch utama         | Membuat branch baru menggunakan `git switch -c`                            |
+| Perlu menggabungkan perubahan secara terkontrol      | Membuat pull request melalui GitHub                                        |
 
 ## 8. Kesimpulan
 

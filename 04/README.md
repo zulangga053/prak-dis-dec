@@ -4,10 +4,10 @@
 
 ### Identitas
 
-- Nama: **Zul Ikhwanul Anggara**
-- NIM: **255410043**
-- Kelas: **Informatika-1**
-- Tanggal Praktikum: **21 Oktober 2026**
+* Nama: **Zul Ikhwanul Anggara**
+* NIM: **255410043**
+* Kelas: **Informatika-1**
+* Tanggal Praktikum: **21 Oktober 2026**
 
 ## 1. Tujuan
 
@@ -30,13 +30,13 @@ Apache Ignite menggunakan cluster dengan beberapa node. Pada praktikum ini, node
 
 ## 3. Alat dan Bahan
 
-- macOS
-- Docker Desktop
-- Docker Compose V2
-- PostgreSQL 18.3 Alpine
-- Apache Ignite 3.1.0
-- Terminal
-- Source code pada direktori `04/postgres` dan `04/ignite`
+* macOS
+* Docker Desktop
+* Docker Compose V2
+* PostgreSQL 18.3 Alpine
+* Apache Ignite 3.1.0
+* Terminal
+* Source code pada direktori `04/postgres` dan `04/ignite`
 
 Praktikum dijalankan pada macOS menggunakan Docker Desktop. Karena itu, perintah yang digunakan adalah `docker compose`, tanpa `sudo`. Untuk koneksi dari container CLI ke layanan Docker Desktop, digunakan `host.docker.internal`.
 
@@ -53,7 +53,7 @@ docker info
 docker run --rm hello-world
 ```
 
-![Pemeriksaan Docker pada macOS](images/01-docker-prasyarat.png)
+![Pemeriksaan Docker pada macOS](../.gitbook/assets/01-docker-prasyarat.png)
 
 ### 4.2 Persiapan berkas PostgreSQL
 
@@ -66,7 +66,7 @@ cd 04/postgres
 docker compose config
 ```
 
-![Validasi konfigurasi PostgreSQL](images/02-postgresql-compose-config.png)
+![Validasi konfigurasi PostgreSQL](../.gitbook/assets/02-postgresql-compose-config.png)
 
 ### 4.3 Menjalankan PostgreSQL
 
@@ -79,7 +79,7 @@ docker compose ps
 
 Primary menggunakan port `5432`, sedangkan replica menggunakan port `5433`. Replica mengambil salinan awal data melalui `pg_basebackup`, kemudian melanjutkan penerimaan WAL dari primary.
 
-![Container PostgreSQL berjalan](images/03-postgresql-containers.png)
+![Container PostgreSQL berjalan](../.gitbook/assets/03-postgresql-containers.png)
 
 ### 4.4 Pemeriksaan primary
 
@@ -101,7 +101,7 @@ docker compose exec postgres_primary \
 
 Nilai `streaming` pada kolom `state` menunjukkan bahwa aliran perubahan dari primary ke replica sedang berlangsung.
 
-![Status primary PostgreSQL](images/04-postgresql-primary-status.png)
+![Status primary PostgreSQL](../.gitbook/assets/04-postgresql-primary-status.png)
 
 ### 4.5 Pemeriksaan replica
 
@@ -115,7 +115,7 @@ docker compose exec postgres_replica \
 
 Hasil `t` menunjukkan bahwa server masih berada dalam mode recovery dan berfungsi sebagai replica.
 
-![Status replica PostgreSQL](images/05-postgresql-replica-status.png)
+![Status replica PostgreSQL](../.gitbook/assets/05-postgresql-replica-status.png)
 
 ### 4.6 Pengujian replikasi data
 
@@ -133,7 +133,7 @@ VALUES ('Data dari primary');
 SELECT * FROM praktikum;
 ```
 
-![Data pada primary PostgreSQL](images/06-data-postgresql-primary.png)
+![Data pada primary PostgreSQL](../.gitbook/assets/06-data-postgresql-primary.png)
 
 Data kemudian diperiksa pada replica menggunakan:
 
@@ -154,7 +154,7 @@ docker compose stop postgres_primary
 docker compose ps
 ```
 
-![Primary dihentikan](images/08-primary-down.png)
+![Primary dihentikan](../.gitbook/assets/08-primary-down.png)
 
 Replica kemudian dipromosikan menjadi primary:
 
@@ -173,7 +173,7 @@ docker compose exec postgres_replica \
 
 Hasil berubah menjadi `f`. Artinya, replica sudah keluar dari mode recovery dan berhasil dipromosikan menjadi primary baru.
 
-![Replica dipromosikan menjadi primary](images/09-replica-promoted.png)
+![Replica dipromosikan menjadi primary](../.gitbook/assets/09-replica-promoted.png)
 
 Setelah pengujian selesai, container PostgreSQL dihentikan:
 
@@ -192,7 +192,7 @@ cd ../ignite
 docker compose config
 ```
 
-![Validasi konfigurasi Apache Ignite](images/10-ignite-compose-config.png)
+![Validasi konfigurasi Apache Ignite](../.gitbook/assets/10-ignite-compose-config.png)
 
 ### 4.9 Menjalankan tiga node Ignite
 
@@ -203,7 +203,7 @@ docker compose up -d
 docker compose ps
 ```
 
-![Tiga node Apache Ignite](images/11-ignite-nodes.png)
+![Tiga node Apache Ignite](../.gitbook/assets/11-ignite-nodes.png)
 
 Pada macOS, port REST tiap node diakses melalui `localhost` atau `host.docker.internal`. Port yang digunakan adalah `10300`, `10301`, dan `10302`.
 
@@ -220,12 +220,12 @@ docker run --rm -it \
 
 Di dalam CLI:
 
-```text
+```
 connect http://host.docker.internal:10300
 cluster init --name=ignite3 --metastorage-group=node1,node2,node3
 ```
 
-![Inisialisasi cluster Apache Ignite](images/12-ignite-cluster-init.png)
+![Inisialisasi cluster Apache Ignite](../.gitbook/assets/12-ignite-cluster-init.png)
 
 ### 4.11 Eksekusi SQL Ignite
 
@@ -245,17 +245,17 @@ Setelah terhubung ke node, mode SQL digunakan untuk memeriksa tabel dan menjalan
 SELECT * FROM system.tables WHERE schema = 'PUBLIC';
 ```
 
-![Tabel pada Apache Ignite](images/13-ignite-sql-tables.png)
+![Tabel pada Apache Ignite](../.gitbook/assets/13-ignite-sql-tables.png)
 
 Query analitik penjualan juga dijalankan untuk melihat jumlah faktur, jumlah pelanggan, pendapatan bulanan, dan rata-rata nilai pesanan.
 
-![Hasil analitik Apache Ignite](images/14-ignite-analytics.png)
+![Hasil analitik Apache Ignite](../.gitbook/assets/14-ignite-analytics.png)
 
 ### 4.12 Pemeriksaan replikasi pada tiga node
 
 Koneksi ke node dilakukan melalui port masing-masing:
 
-```text
+```
 http://host.docker.internal:10300
 http://host.docker.internal:10301
 http://host.docker.internal:10302
@@ -269,9 +269,7 @@ SELECT * FROM system.tables WHERE schema = 'PUBLIC';
 
 Hasil pemeriksaan:
 
-![Data pada node 1](images/15-ignite-node-1.png)
-![Data pada node 2](images/16-ignite-node-2.png)
-![Data pada node 3](images/17-ignite-node-3.png)
+![Data pada node 1](../.gitbook/assets/15-ignite-node-1.png) ![Data pada node 2](../.gitbook/assets/16-ignite-node-2.png) ![Data pada node 3](../.gitbook/assets/17-ignite-node-3.png)
 
 Alamat IP container juga diperiksa menggunakan `docker inspect`:
 
@@ -281,7 +279,7 @@ docker inspect -f \
 <NAMA_CONTAINER>
 ```
 
-![Alamat IP container Apache Ignite](images/18-ignite-inspect-ip.png)
+![Alamat IP container Apache Ignite](../.gitbook/assets/18-ignite-inspect-ip.png)
 
 Setelah pengujian selesai, semua node dihentikan:
 
@@ -289,7 +287,7 @@ Setelah pengujian selesai, semua node dihentikan:
 docker compose down
 ```
 
-![Apache Ignite dihentikan](images/19-apache-ignite-down.png)
+![Apache Ignite dihentikan](../.gitbook/assets/19-apache-ignite-down.png)
 
 ## 5. Hasil Praktikum
 
@@ -313,15 +311,15 @@ Penyesuaian pada macOS terutama berkaitan dengan penggunaan Docker Desktop, peng
 
 ## 7. Kendala dan Solusi
 
-| Kendala | Solusi |
-|---|---|
-| Petunjuk modul menggunakan Linux, sedangkan praktikum dilakukan pada macOS | Menggunakan Docker Desktop dan menyesuaikan perintah menjadi `docker compose` tanpa `sudo` |
-| Nama folder sumber PostgreSQL mengandung spasi, yaitu `src 2` | Menyalin berkas ke folder `04/postgres` agar perintah lebih mudah dibaca dan dijalankan |
-| Replica PostgreSQL belum langsung berstatus sehat | Memeriksa log dengan `docker compose logs` dan menunggu proses `pg_basebackup` selesai |
-| Replica tidak dapat digunakan untuk menulis data | Menjalankan operasi tulis pada primary dan hanya membaca data dari replica |
-| Opsi `--url` tidak dikenali oleh CLI Apache Ignite 3.1.0 | Menjalankan CLI terlebih dahulu, lalu menggunakan perintah `connect` di dalam CLI |
-| Koneksi CLI Ignite dari container perlu mengakses Docker Desktop pada macOS | Menggunakan alamat `host.docker.internal` dan port node yang diteruskan |
-| Tidak semua perintah Linux pada modul dapat digunakan langsung di macOS | Menyesuaikan perintah berdasarkan Docker Desktop dan memeriksa hasil melalui `docker compose ps` serta `docker compose logs` |
+| Kendala                                                                     | Solusi                                                                                                                       |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Petunjuk modul menggunakan Linux, sedangkan praktikum dilakukan pada macOS  | Menggunakan Docker Desktop dan menyesuaikan perintah menjadi `docker compose` tanpa `sudo`                                   |
+| Nama folder sumber PostgreSQL mengandung spasi, yaitu `src 2`               | Menyalin berkas ke folder `04/postgres` agar perintah lebih mudah dibaca dan dijalankan                                      |
+| Replica PostgreSQL belum langsung berstatus sehat                           | Memeriksa log dengan `docker compose logs` dan menunggu proses `pg_basebackup` selesai                                       |
+| Replica tidak dapat digunakan untuk menulis data                            | Menjalankan operasi tulis pada primary dan hanya membaca data dari replica                                                   |
+| Opsi `--url` tidak dikenali oleh CLI Apache Ignite 3.1.0                    | Menjalankan CLI terlebih dahulu, lalu menggunakan perintah `connect` di dalam CLI                                            |
+| Koneksi CLI Ignite dari container perlu mengakses Docker Desktop pada macOS | Menggunakan alamat `host.docker.internal` dan port node yang diteruskan                                                      |
+| Tidak semua perintah Linux pada modul dapat digunakan langsung di macOS     | Menyesuaikan perintah berdasarkan Docker Desktop dan memeriksa hasil melalui `docker compose ps` serta `docker compose logs` |
 
 ## 8. Kesimpulan
 
@@ -333,6 +331,6 @@ Apache Ignite berhasil dijalankan sebagai cluster tiga node. Cluster tersebut da
 
 1. Modul 4 Praktikum Sistem Terdistribusi dan Terdesentralisasi, Universitas Teknologi Digital Indonesia.
 2. PostgreSQL Documentation — High Availability, Load Balancing, and Replication: https://www.postgresql.org/docs/current/high-availability.html
-3. PostgreSQL Docker Image: https://hub.docker.com/_/postgres
+3. PostgreSQL Docker Image: https://hub.docker.com/\_/postgres
 4. Apache Ignite 3 Documentation: https://ignite.apache.org/docs/ignite3/latest/
 5. Docker Compose Documentation: https://docs.docker.com/compose/
