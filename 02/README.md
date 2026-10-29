@@ -46,7 +46,7 @@ Komunikasi antarproses pada sistem terdistribusi memiliki tantangan yang berbeda
 
 Langkah pertama dilakukan dengan menampilkan daftar proses yang sedang berjalan pada komputer. Proses tersebut dikelola oleh sistem operasi dan setiap proses memiliki PID masing-masing.
 
-![Daftar proses](../.gitbook/assets/01-daftar-proses.png)
+![Daftar proses](images/01-daftar-proses.png)
 
 Dari daftar tersebut dapat dilihat bahwa sistem sedang menjalankan berbagai proses sistem maupun aplikasi pengguna.
 
@@ -54,11 +54,11 @@ Dari daftar tersebut dapat dilihat bahwa sistem sedang menjalankan berbagai pros
 
 Salah satu aplikasi dijalankan untuk melihat proses yang dibuat oleh aplikasi tersebut.
 
-![Aplikasi dijalankan](../.gitbook/assets/02-aplikasi-dijalankan.png)
+![Aplikasi dijalankan](images/02-aplikasi-dijalankan.png)
 
 Setelah aplikasi berjalan, proses aplikasi dicari menggunakan nama aplikasi atau PID yang ditampilkan oleh sistem.
 
-![PID aplikasi](../.gitbook/assets/03-pid-aplikasi.png)
+![PID aplikasi](images/03-pid-aplikasi.png)
 
 PID digunakan sebagai identitas proses saat menjalankan perintah untuk menghentikan proses.
 
@@ -70,7 +70,7 @@ Proses aplikasi dihentikan menggunakan perintah `kill` dengan PID proses yang te
 kill <PID>
 ```
 
-![Menghentikan aplikasi dengan PID](../.gitbook/assets/04-kill-proses.png)
+![Menghentikan aplikasi dengan PID](images/04-kill-proses.png)
 
 Setelah perintah dijalankan, proses aplikasi diperiksa kembali untuk memastikan proses sudah tidak berjalan.
 
@@ -82,7 +82,7 @@ Jika proses tidak berhenti menggunakan signal biasa, proses dapat dihentikan sec
 kill -9 <PID>
 ```
 
-![Force kill aplikasi](../.gitbook/assets/05-force-kill-proses.png)
+![Force kill aplikasi](images/05-force-kill-proses.png)
 
 Perintah tersebut menghentikan proses secara langsung. Karena proses tidak diberi kesempatan melakukan pembersihan secara normal, penggunaannya dilakukan hanya jika penghentian biasa tidak berhasil.
 
@@ -90,7 +90,7 @@ Perintah tersebut menghentikan proses secara langsung. Karena proses tidak diber
 
 Setelah proses dihentikan, aplikasi dijalankan kembali untuk memastikan aplikasi dapat dibuat sebagai proses baru.
 
-![Aplikasi dijalankan kembali](../.gitbook/assets/06-aplikasi-dijalankan-kembali.png)
+![Aplikasi dijalankan kembali](images/06-aplikasi-dijalankan-kembali.png)
 
 Pada saat dijalankan kembali, aplikasi dapat memperoleh PID baru. Hal ini menunjukkan bahwa PID melekat pada proses tertentu, bukan bersifat tetap untuk aplikasi.
 
@@ -102,7 +102,7 @@ Pada saat dijalankan kembali, aplikasi dapat memperoleh PID baru. Hal ini menunj
 uv --version
 ```
 
-![Instalasi atau pemeriksaan uv](<../.gitbook/assets/07-install-uv.png .png>)
+![Instalasi atau pemeriksaan uv](<images/07-install-uv.png .png>)
 
 Workspace praktikum kemudian dibuat dengan nama `workspace-01`.
 
@@ -114,7 +114,7 @@ uv venv --python 3.14
 source .venv/bin/activate
 ```
 
-![Workspace dan virtual environment](<../.gitbook/assets/08-uv-workspace.png .png>)
+![Workspace dan virtual environment](<images/08-uv-workspace.png .png>)
 
 Virtual environment digunakan agar paket praktikum terisolasi dari instalasi Python global.
 
@@ -126,7 +126,7 @@ Paket Strawberry GraphQL diinstal menggunakan `uv`.
 uv pip install 'strawberry-graphql[cli]'
 ```
 
-![Instalasi Strawberry GraphQL](../.gitbook/assets/09-instalasi-strawberry.png)
+![Instalasi Strawberry GraphQL](images/09-instalasi-strawberry.png)
 
 ### 4.8 Membuat GraphQL schema
 
@@ -157,7 +157,7 @@ schema = strawberry.Schema(query=Query)
 app = GraphQL(schema)
 ```
 
-![Isi file schema.py](../.gitbook/assets/10-isi-file-schema.py-workspace-01.png)
+![Isi file schema.py](images/10-isi-file-schema.py-workspace-01.png)
 
 ### 4.9 Menjalankan GraphQL server
 
@@ -169,7 +169,7 @@ strawberry server schema
 
 Namun perintah tersebut menghasilkan pesan `No such command 'server'`. Kendala tersebut terjadi karena versi Strawberry yang terpasang tidak menyediakan subcommand `server`.
 
-![Kendala perintah strawberry server schema](<../.gitbook/assets/15-kendala-pada-saat-perintah-strawberry server schem.png>)
+![Kendala perintah strawberry server schema](<images/15-kendala-pada-saat-perintah-strawberry server schem.png>)
 
 Sebagai solusi, aplikasi GraphQL dijalankan menggunakan Uvicorn melalui objek `app` yang telah dibuat di `schema.py`.
 
@@ -177,7 +177,7 @@ Sebagai solusi, aplikasi GraphQL dijalankan menggunakan Uvicorn melalui objek `a
 uvicorn schema:app --host 127.0.0.1 --port 8000
 ```
 
-![GraphQL server aktif](<../.gitbook/assets/11-graphql-server-aktif.png .png>)
+![GraphQL server aktif](<images/11-graphql-server-aktif.png .png>)
 
 ### 4.10 Mengakses server melalui browser
 
@@ -198,7 +198,7 @@ Query berikut dimasukkan pada GraphQL interface:
 }
 ```
 
-![Query dan response GraphQL](../.gitbook/assets/12-query-dan-response-graphql.png)
+![Query dan response GraphQL](images/12-query-dan-response-graphql.png)
 
 Server mengembalikan daftar buku beserta judul dan penulisnya.
 
@@ -212,7 +212,7 @@ curl -X POST http://127.0.0.1:8000/graphql \
   -d '{"query":"{ books { title author } }"}'
 ```
 
-![Request curl](../.gitbook/assets/13-request-curl.png)
+![Request curl](images/13-request-curl.png)
 
 Pengujian ini menunjukkan bahwa server dapat menerima request dari client HTTP.
 
@@ -220,7 +220,7 @@ Pengujian ini menunjukkan bahwa server dapat menerima request dari client HTTP.
 
 Server dihentikan dari terminal tempat server berjalan dengan menekan `Ctrl-C`.
 
-![GraphQL server berhenti](../.gitbook/assets/14-graphql-server-berhenti.png)
+![GraphQL server berhenti](images/14-graphql-server-berhenti.png)
 
 ## 5. Pengerjaan Tugas: Membuat Client GraphQL
 
@@ -267,7 +267,7 @@ with urlopen(request) as response:
 print(json.dumps(result, indent=2))
 ```
 
-![Isi client.py](../.gitbook/assets/17-isi-client-python.png)
+![Isi client.py](images/17-isi-client-python.png)
 
 Client menggunakan metode `POST` karena query dikirimkan ke server sebagai data JSON. Endpoint yang digunakan sama dengan endpoint GraphQL pada browser.
 
@@ -279,7 +279,7 @@ Server dijalankan kembali menggunakan perintah berikut:
 uvicorn schema:app --host 127.0.0.1 --port 8000
 ```
 
-![GraphQL server untuk client](../.gitbook/assets/18-graphql-server-untuk-client.png)
+![GraphQL server untuk client](images/18-graphql-server-untuk-client.png)
 
 ### 5.3 Menjalankan client
 
@@ -290,7 +290,7 @@ source .venv/bin/activate
 python client.py
 ```
 
-![Client GraphQL berhasil](../.gitbook/assets/19-client-graphql-berhasil.png)
+![Client GraphQL berhasil](images/19-client-graphql-berhasil.png)
 
 Response yang diterima client berbentuk JSON:
 
@@ -315,7 +315,7 @@ Response yang diterima client berbentuk JSON:
 
 Setelah client dijalankan, terminal server menunjukkan bahwa terdapat request yang diterima dari client.
 
-![Server menerima request client](../.gitbook/assets/20-server-menerima-request-client.png)
+![Server menerima request client](images/20-server-menerima-request-client.png)
 
 Hal ini membuktikan bahwa client dan server berhasil berkomunikasi melalui endpoint GraphQL.
 
@@ -323,7 +323,7 @@ Hal ini membuktikan bahwa client dan server berhasil berkomunikasi melalui endpo
 
 Server dihentikan, kemudian `client.py` dijalankan kembali. Client tidak dapat memperoleh data karena tidak ada server yang menerima request.
 
-![Client saat server tidak aktif](../.gitbook/assets/21-client-server-tidak-aktif.png)
+![Client saat server tidak aktif](images/21-client-server-tidak-aktif.png)
 
 Pengujian tersebut menunjukkan bahwa client memerlukan server yang aktif agar request dapat diproses.
 
@@ -331,7 +331,7 @@ Pengujian tersebut menunjukkan bahwa client memerlukan server yang aktif agar re
 
 Server dijalankan kembali, kemudian client dijalankan ulang. Setelah server aktif, request kembali berhasil diproses dan data buku dapat diterima client.
 
-![Client berhasil setelah server dijalankan kembali](../.gitbook/assets/22-client-berhasil-setelah-server-dijalankan-kembali.png)
+![Client berhasil setelah server dijalankan kembali](images/22-client-berhasil-setelah-server-dijalankan-kembali.png)
 
 ## 6. Hasil Praktikum
 

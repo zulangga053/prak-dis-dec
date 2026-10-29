@@ -39,7 +39,7 @@ sudo apt update
 sudo apt install chrony
 ```
 
-![Instalasi Chrony pada Linux](../.gitbook/assets/14-instalasi-chrony-linux.png)
+![Instalasi Chrony pada Linux](images/14-instalasi-chrony-linux.png)
 
 Setelah instalasi, service diperiksa dan dijalankan:
 
@@ -55,7 +55,7 @@ chronyc sources -v
 chronyc tracking
 ```
 
-![Status service Chrony](../.gitbook/assets/15-status-chrony-linux.png) ![Status sinkronisasi Chrony](../.gitbook/assets/16-tracking-chrony-linux.png)
+![Status service Chrony](images/15-status-chrony-linux.png) ![Status sinkronisasi Chrony](images/16-tracking-chrony-linux.png)
 
 `chronyc sources -v` menampilkan server NTP yang tersedia dan sumber yang dipilih. `chronyc tracking` menampilkan reference time, stratum, system time, offset, serta status leap. Data tersebut menjadi bukti bahwa Chrony telah berjalan dan melakukan sinkronisasi waktu.
 
@@ -65,7 +65,7 @@ Sebagai pengujian tambahan pada macOS, sinkronisasi NTP juga dilakukan menggunak
 sntp -sS time.apple.com
 ```
 
-![Bukti sinkronisasi NTP pada macOS](../.gitbook/assets/13-sinkronisasi-ntp.png)
+![Bukti sinkronisasi NTP pada macOS](images/13-sinkronisasi-ntp.png)
 
 ### 4.2 Menjalankan program contoh
 
@@ -100,7 +100,7 @@ Setiap event lokal menaikkan elemen clock milik proses. Saat mengirim pesan, pro
 
 Kelima thread dimulai hampir bersamaan. Karena scheduler OS menentukan giliran eksekusi, urutan pesan `starting` dan `finished` tidak harus sama pada setiap eksekusi. Semua task tetap selesai karena setiap thread dipanggil `join()`.
 
-![Multithreading eksekusi 1](../.gitbook/assets/02-multithreading.png) ![Multithreading eksekusi 2](../.gitbook/assets/02b-multithreading.png)
+![Multithreading eksekusi 1](images/02-multithreading.png) ![Multithreading eksekusi 2](images/02b-multithreading.png)
 
 ### 5.3 Race condition
 
@@ -118,9 +118,9 @@ Visualisasi manual:
 
 Akibatnya, dua transaksi dapat sama-sama dianggap valid walaupun total penarikan Rp160 melebihi saldo awal. Inilah data race: hasil bergantung pada urutan eksekusi thread.
 
-![Visualisasi race condition](../.gitbook/assets/10-visualisasi-race-condition.png)
+![Visualisasi race condition](images/10-visualisasi-race-condition.png)
 
-![Race condition tanpa lock](../.gitbook/assets/03-race-condition-tanpa-lock.png) ![Race condition dengan lock](../.gitbook/assets/04-race-condition-dengan-lock.png)
+![Race condition tanpa lock](images/03-race-condition-tanpa-lock.png) ![Race condition dengan lock](images/04-race-condition-dengan-lock.png)
 
 ### 5.4 Deadlock
 
@@ -136,9 +136,9 @@ Visualisasi manual:
 4. Thread 2 tidak dapat melanjutkan karena `lock_a` dimiliki Thread 1.
 5. Terbentuk circular wait sehingga kedua thread berhenti menunggu.
 
-![Visualisasi deadlock](../.gitbook/assets/11-visualisasi-deadlock.png)
+![Visualisasi deadlock](images/11-visualisasi-deadlock.png)
 
-![Deadlock](../.gitbook/assets/05-deadlock.png) ![Solusi deadlock](../.gitbook/assets/06-solusi-deadlock.png)
+![Deadlock](images/05-deadlock.png) ![Solusi deadlock](images/06-solusi-deadlock.png)
 
 ### 5.5 Raft
 
@@ -153,13 +153,13 @@ Visualisasi manual:
 5. Node 2 berubah menjadi leader dan mengirim heartbeat kepada follower.
 6. Selama heartbeat diterima, follower tidak memulai election baru.
 
-![Visualisasi algoritma Raft](../.gitbook/assets/12-visualisasi-raft.png)
+![Visualisasi algoritma Raft](images/12-visualisasi-raft.png)
 
-![Raft](../.gitbook/assets/07-raft.png)
+![Raft](images/07-raft.png)
 
 ## 5.6 Output modul buatan
 
-![Vector Clock module](../.gitbook/assets/08-vector-clock-module.png) ![Raft module](../.gitbook/assets/09-raft-module.png)
+![Vector Clock module](images/08-vector-clock-module.png) ![Raft module](images/09-raft-module.png)
 
 ## 6. Analisis
 

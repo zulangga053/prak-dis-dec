@@ -57,7 +57,7 @@ Versi Git diperiksa menggunakan perintah berikut:
 git --version
 ```
 
-![Pemeriksaan versi Git](.gitbook/assets/01-git-version.png)
+![Pemeriksaan versi Git](images/01-git-version.png)
 
 ### 4.2 Mengonfigurasi Git
 
@@ -70,13 +70,13 @@ git config --global init.defaultBranch main
 git config --global --list
 ```
 
-![Konfigurasi Git](.gitbook/assets/02-git-config.png)
+![Konfigurasi Git](images/02-git-config.png)
 
 ### 4.3 Membuat Repository GitHub
 
 Repository `prak-dis-dec` dibuat pada akun GitHub untuk menyimpan laporan praktikum dari minggu pertama sampai minggu ke-14.
 
-![Pembuatan repository](.gitbook/assets/03-create-repo.png)
+![Pembuatan repository](images/03-create-repo.png)
 
 ### 4.4 Melakukan Clone Repository
 
@@ -87,7 +87,7 @@ git clone https://github.com/zulangga053/prak-dis-dec.git
 cd prak-dis-dec
 ```
 
-![Clone repository](.gitbook/assets/04-clone-repository.png)
+![Clone repository](images/04-clone-repository.png)
 
 ### 4.5 Memeriksa Remote Repository
 
@@ -97,7 +97,7 @@ Remote repository diperiksa untuk memastikan repository lokal terhubung ke GitHu
 git remote -v
 ```
 
-![Remote repository](.gitbook/assets/05-git-remote.png)
+![Remote repository](images/05-git-remote.png)
 
 ### 4.6 Memeriksa Status dan Branch
 
@@ -108,7 +108,7 @@ git status
 git branch
 ```
 
-![Status dan branch repository](.gitbook/assets/06-git-status-branch-repo.png)
+![Status dan branch repository](images/06-git-status-branch-repo.png)
 
 ### 4.7 Membuat Branch Praktikum
 
@@ -118,7 +118,7 @@ Branch baru dibuat sebagai tempat melakukan latihan perubahan tanpa langsung bek
 git switch -c latihan-git
 ```
 
-![Pembuatan dan pemeriksaan branch](.gitbook/assets/07-create-branch-and-kondisi-branch.png)
+![Pembuatan dan pemeriksaan branch](images/07-create-branch-and-kondisi-branch.png)
 
 ### 4.8 Menambahkan Perubahan dan Membuat Commit
 
@@ -130,7 +130,7 @@ git commit -m "docs: add git practice file"
 git log --oneline
 ```
 
-![Add, commit, dan riwayat perubahan](.gitbook/assets/08-add-commit-riwayat-branch.png)
+![Add, commit, dan riwayat perubahan](images/08-add-commit-riwayat-branch.png)
 
 ### 4.9 Mengirim Branch ke GitHub
 
@@ -140,19 +140,19 @@ Branch hasil latihan dikirim ke remote repository menggunakan perintah berikut:
 git push -u origin latihan-git
 ```
 
-![Push branch](.gitbook/assets/09-git-push-branch.png)
+![Push branch](images/09-git-push-branch.png)
 
 ### 4.10 Membuat Pull Request
 
 Pull request dibuat untuk mengusulkan penggabungan perubahan dari branch `latihan-git` ke branch utama pada GitHub.
 
-![Pull request](.gitbook/assets/10-git-PR.png)
+![Pull request](images/10-git-PR.png)
 
 ### 4.11 Memeriksa Branch Utama Setelah Pull Request
 
 Setelah proses pull request, kondisi branch utama diperiksa untuk memastikan perubahan telah diproses pada repository.
 
-![Kondisi branch utama setelah pull request](.gitbook/assets/11-cek-branch-main-after-pr.png)
+![Kondisi branch utama setelah pull request](images/11-cek-branch-main-after-pr.png)
 
 ## 5. Hasil Praktikum
 
