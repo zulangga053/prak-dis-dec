@@ -1,35 +1,5 @@
 # Laporan Praktikum Sistem Terdistribusi dan Terdesentralisasi
 
-<<<<<<< HEAD
-## Pertemuan 05: \[Judul Modul]
-
-### Identitas
-
-* Nama: **Zul Ikhwanul Anggara**
-* NIM: **255410043**
-* Kelas: **Informatika-1**
-* Tanggal Praktikum: **\[Isi tanggal]**
-
-## 1. Tujuan
-
-1. \[Tujuan praktikum]
-2. \[Tujuan praktikum]
-
-## 2. Dasar Teori
-
-\[Uraikan teori yang berkaitan dengan modul praktikum.]
-
-## 3. Alat dan Bahan
-
-* \[Alat atau perangkat lunak]
-* \[Bahan praktikum]
-
-## 4. Langkah Pengerjaan
-
-### 4.1 \[Nama langkah]
-
-\[Deskripsi langkah dan perintah yang digunakan.]
-=======
 ## Pertemuan 05 — Fault Tolerance
 
 ### Identitas
@@ -125,7 +95,6 @@ Struktur utama project yang digunakan:
 ### 4.1 Menyiapkan workspace dan environment Python
 
 Workspace dibuat sebagai tempat menyimpan aplikasi, konfigurasi Docker, dan script pengujian. Setelah itu virtual environment disiapkan agar dependency praktikum tidak bercampur dengan instalasi Python global.
->>>>>>> 4cb69be (docs: tambah laporan praktikum fault tolerance)
 
 ```bash
 mkdir -p workspace-05
@@ -135,34 +104,6 @@ source .venv/bin/activate
 python --version
 ```
 
-<<<<<<< HEAD
-### 4.2 \[Nama langkah]
-
-\[Deskripsi langkah berikutnya.]
-
-## 5. Hasil Praktikum
-
-\[Deskripsikan hasil yang diperoleh dan lampirkan bukti pengerjaan.]
-
-## 6. Analisis
-
-\[Analisis hasil praktikum, konsep yang dipahami, dan hubungan dengan sistem terdistribusi atau terdesentralisasi.]
-
-## 7. Kendala dan Solusi
-
-| Kendala    | Solusi    |
-| ---------- | --------- |
-| \[Kendala] | \[Solusi] |
-
-## 8. Kesimpulan
-
-\[Kesimpulan praktikum.]
-
-## 9. Referensi
-
-1. \[Referensi modul]
-2. \[Dokumentasi resmi]
-=======
 ![Python environment](images/02_python-environment.png)
 
 ### 4.2 Menginstall Blacksheep
@@ -469,4 +410,4 @@ Pengujian menunjukkan bahwa aplikasi masih dapat diakses ketika salah satu insta
 3. Docker Compose Documentation. https://docs.docker.com/compose/
 4. Nginx Documentation. https://nginx.org/en/docs/
 5. Tenacity Documentation. https://tenacity.readthedocs.io/
->>>>>>> 4cb69be (docs: tambah laporan praktikum fault tolerance)
+
