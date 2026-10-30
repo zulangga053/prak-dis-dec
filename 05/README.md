@@ -7,7 +7,7 @@
 - Nama: **Zul Ikhwanul Anggara**
 - NIM: **255410043**
 - Kelas: **Informatika-1**
-- Tanggal praktikum: **30 Oktober 2026**
+- Tanggal praktikum: **29 Oktober 2026**
 
 ---
 
@@ -354,18 +354,18 @@ Ketika kegagalan terjadi berulang, circuit berpindah dari `closed` menjadi `open
 
 ## 5. Hasil Praktikum
 
-| No. | Pengujian | Kondisi | Hasil |
-|---:|---|---|---|
-| 1 | Aplikasi Blacksheep lokal | Server aktif pada port `44777` | Aplikasi dapat diakses |
-| 2 | Container aplikasi | Image berhasil dibangun dan dijalankan | Aplikasi dapat diakses dari container |
-| 3 | Load balancing | Dua instance `bs_app` dan satu Nginx | Request diteruskan melalui Nginx |
-| 4 | Kegagalan instance | Satu container `bs_app` dihentikan | Instance lain masih melayani request |
-| 5 | Heartbeat | Server aktif | Koneksi berhasil |
-| 6 | Heartbeat | Server tidak aktif | Koneksi gagal terdeteksi |
-| 7 | Retry | Server aktif | Request berhasil |
-| 8 | Retry | Server tidak aktif | Request diulang lalu gagal setelah batas percobaan |
-| 9 | Circuit breaker | Server aktif | Circuit berada pada `closed` |
-| 10 | Circuit breaker | Server tidak aktif | Circuit berpindah menuju `open` |
+| No. | Pengujian                 | Kondisi                                | Hasil                                              |
+| --: | ------------------------- | -------------------------------------- | -------------------------------------------------- |
+|   1 | Aplikasi Blacksheep lokal | Server aktif pada port `44777`         | Aplikasi dapat diakses                             |
+|   2 | Container aplikasi        | Image berhasil dibangun dan dijalankan | Aplikasi dapat diakses dari container              |
+|   3 | Load balancing            | Dua instance `bs_app` dan satu Nginx   | Request diteruskan melalui Nginx                   |
+|   4 | Kegagalan instance        | Satu container `bs_app` dihentikan     | Instance lain masih melayani request               |
+|   5 | Heartbeat                 | Server aktif                           | Koneksi berhasil                                   |
+|   6 | Heartbeat                 | Server tidak aktif                     | Koneksi gagal terdeteksi                           |
+|   7 | Retry                     | Server aktif                           | Request berhasil                                   |
+|   8 | Retry                     | Server tidak aktif                     | Request diulang lalu gagal setelah batas percobaan |
+|   9 | Circuit breaker           | Server aktif                           | Circuit berada pada `closed`                       |
+|  10 | Circuit breaker           | Server tidak aktif                     | Circuit berpindah menuju `open`                    |
 
 ---
 
@@ -385,13 +385,13 @@ Dari rangkaian pengujian tersebut terlihat bahwa fault tolerance biasanya dibang
 
 ## 7. Kendala dan Solusi
 
-| Kendala | Solusi |
-|---|---|
-| `ModuleNotFoundError: No module named 'blacksheep'` saat menjalankan `dev.py` | Mengaktifkan virtual environment yang benar lalu memasang dependency menggunakan `python -m pip` atau `uv pip`. |
-| Aplikasi lokal dan aplikasi container menggunakan port berbeda | Port `44777` digunakan untuk pengujian lokal failure detection, sedangkan port internal container dan Nginx menggunakan port `80`. |
-| Request tidak langsung diarahkan ke container aplikasi | Request diarahkan melalui `http://localhost` agar masuk ke Nginx sebagai reverse proxy. |
-| Salah satu instance aplikasi berhenti | Instance kedua tetap dijalankan sehingga request masih dapat dilayani. |
-| Server tidak aktif saat pengujian retry | Kondisi tersebut memang digunakan untuk mengamati percobaan ulang dan error setelah batas retry tercapai. |
+| Kendala                                                                       | Solusi                                                                                                                             |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `ModuleNotFoundError: No module named 'blacksheep'` saat menjalankan `dev.py` | Mengaktifkan virtual environment yang benar lalu memasang dependency menggunakan `python -m pip` atau `uv pip`.                    |
+| Aplikasi lokal dan aplikasi container menggunakan port berbeda                | Port `44777` digunakan untuk pengujian lokal failure detection, sedangkan port internal container dan Nginx menggunakan port `80`. |
+| Request tidak langsung diarahkan ke container aplikasi                        | Request diarahkan melalui `http://localhost` agar masuk ke Nginx sebagai reverse proxy.                                            |
+| Salah satu instance aplikasi berhenti                                         | Instance kedua tetap dijalankan sehingga request masih dapat dilayani.                                                             |
+| Server tidak aktif saat pengujian retry                                       | Kondisi tersebut memang digunakan untuk mengamati percobaan ulang dan error setelah batas retry tercapai.                          |
 
 ---
 
@@ -405,9 +405,8 @@ Pengujian menunjukkan bahwa aplikasi masih dapat diakses ketika salah satu insta
 
 ## 9. Referensi
 
-1. Modul 5 Praktikum Sistem Terdistribusi dan Terdesentralisasi, Universitas Teknologi Digital Indonesia, *Fault Tolerance*.
+1. Modul 5 Praktikum Sistem Terdistribusi dan Terdesentralisasi, Universitas Teknologi Digital Indonesia, _Fault Tolerance_.
 2. Blacksheep Documentation. https://www.neoteroi.dev/blacksheep/
 3. Docker Compose Documentation. https://docs.docker.com/compose/
 4. Nginx Documentation. https://nginx.org/en/docs/
 5. Tenacity Documentation. https://tenacity.readthedocs.io/
-
