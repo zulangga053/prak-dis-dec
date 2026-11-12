@@ -36,7 +36,7 @@ site:
         directory: ./05
     - type: space
       key: modul-06
-      title: Modul 6
+      title: Modul 6 — Distributed File System (HDFS)
       path: modul-06
       content:
         directory: ./06
