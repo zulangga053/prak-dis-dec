@@ -42,7 +42,7 @@ site:
         directory: ./06
     - type: space
       key: modul-07
-      title: Modul 7
+      title: Modul 7 — Cloud Computing
       path: modul-07
       content:
         directory: ./07
